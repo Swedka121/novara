@@ -1,0 +1,50 @@
+$primary-color: #1c4d3d;
+$primary-black: #000000;
+$primary-white: #f5f5dc;
+$element-color: #a0c2b9;
+$element-color2: #d3f4d1;
+$primary-font: "SF Pro Regular";
+
+body {
+  margin: 0%;
+  padding: 0%;
+  overflow-x: hidden;
+
+  font-family: $primary-font;
+  color: $primary-white;
+  background-color: $primary-black;
+}
+
+header {
+  margin-top: 50px;
+  width: 100vw;
+  height: 25px;
+  .container {
+    width: 90%;
+    height: 25px;
+    margin: 0% auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .nav {
+      display: flex;
+      column-gap: 50px;
+      .link {
+        font-size: 18px;
+        text-decoration: none;
+        color: rgba($primary-color, $alpha: 0.5);
+        font-family: "SF Pro Medium";
+      }
+      .underlined {
+        color: $primary-white;
+      }
+      .underlined::before {
+        content: "-";
+        width: 100px;
+        height: 100px;
+        background-color: #d3f4d1;
+      }
+    }
+  }
+}

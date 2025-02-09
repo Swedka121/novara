@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
-import "@/app/global.scss";
-import "@/app/fonts.scss";
+import "@/styles/global.scss";
+import "@/styles/fonts.scss";
+import useStore from "@/store/_index";
+import { initData, mainStore } from "@/store/main";
+import { MobxContext } from "@/context/mobxContext";
+import Providers from "./providers";
+import HeaderNav from "@/components/headerNav";
 
 export const metadata: Metadata = {
   title: "Novara",
@@ -15,18 +20,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header>
-          <div className="container">
-            <img src="/images/logo-header.png" className="logo"></img>
-            <nav className="nav"></nav>
-          </div>
-        </header>
-        <main>
-          <div className="container">{children}</div>
-        </main>
-        <footer>
-          <div className="container"></div>
-        </footer>
+        <Providers>
+          <header>
+            <div className="container">
+              <img src="/images/logo-header.png" className="logo"></img>
+              <HeaderNav />
+            </div>
+          </header>
+          <main>
+            <div className="container">{children}</div>
+          </main>
+          <footer>
+            <div className="container"></div>
+          </footer>
+        </Providers>
       </body>
     </html>
   );
