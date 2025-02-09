@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/app/global.scss";
+import "@/app/fonts.scss";
 
 export const metadata: Metadata = {
   title: "Novara",
@@ -13,7 +14,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <header>
+          <div className="container">
+            <img src="/images/logo-header.png" className="logo"></img>
+            <nav className="nav"></nav>
+          </div>
+        </header>
+        <main>
+          <div className="container">{children}</div>
+        </main>
+        <footer>
+          <div className="container"></div>
+        </footer>
+      </body>
     </html>
   );
 }
