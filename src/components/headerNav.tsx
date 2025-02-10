@@ -1,45 +1,59 @@
 "use client";
 import { MobxContext } from "@/context/mobxContext";
+import { observer } from "mobx-react-lite";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
-export default function HeaderNav() {
+export default observer(function HeaderNav() {
   const store = useContext(MobxContext);
 
-  return store && typeof window !== "undefined" ? (
+  return (
     <nav className="nav">
-      <Link
-        className={
-          store.getActiveBlock() != "Home" ? "link" : "underlined link"
-        }
-        href="#home"
+      <button
+        className={store.ActiveBlock != "Home" ? "link" : "underlined link"}
+        onClick={(ev) => {
+          window.scrollTo({
+            top: store.ScrollBoxes.find((a) => a.name == "Home")?.scrollStart,
+            behavior: "smooth",
+          });
+        }}
       >
         Home
-      </Link>
-      <Link
-        className={
-          store.getActiveBlock() != "About" ? "link" : "underlined link"
-        }
-        href="#about"
+      </button>
+      <button
+        className={store.ActiveBlock != "About" ? "link" : "underlined link"}
+        onClick={(ev) => {
+          window.scrollTo({
+            top: store.ScrollBoxes.find((a) => a.name == "About")?.scrollStart,
+            behavior: "smooth",
+          });
+        }}
       >
         About
-      </Link>
-      <Link
-        className={
-          store.getActiveBlock() != "News" ? "link" : "underlined link"
-        }
-        href="#news"
+      </button>
+      <button
+        className={store.ActiveBlock != "News" ? "link" : "underlined link"}
+        onClick={(ev) => {
+          window.scrollTo({
+            top: store.ScrollBoxes.find((a) => a.name == "News")?.scrollStart,
+            behavior: "smooth",
+          });
+        }}
       >
         News
-      </Link>
-      <Link
-        className={
-          store.getActiveBlock() != "Contact" ? "link" : "underlined link"
-        }
-        href="#contact"
+      </button>
+      <button
+        className={store.ActiveBlock != "Contact" ? "link" : "underlined link"}
+        onClick={(ev) => {
+          window.scrollTo({
+            top: store.ScrollBoxes.find((a) => a.name == "Contact")
+              ?.scrollStart,
+            behavior: "smooth",
+          });
+        }}
       >
         Contact
-      </Link>
+      </button>
     </nav>
-  ) : null;
-}
+  );
+});

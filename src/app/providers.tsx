@@ -6,6 +6,6 @@ import React from "react";
 export default function Providers({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const store = useStore({ store: { activeBlock: "Home" } });
+  const store = useStore({ store: {} });
   return <MobxContext.Provider value={store}>{children}</MobxContext.Provider>;
 }
