@@ -1,6 +1,7 @@
 import Block from "@/components/Block";
 import React from "react";
 import ScrollEvent from "@/components/scrollEvent";
+import Logo from "@/components/Logo";
 
 export default function page() {
   return (
@@ -22,6 +23,18 @@ export default function page() {
               <button className="button2">
                 Move to <img src="/images/arrow1.svg"></img>
               </button>
+            </div>
+          </div>
+          <div className="aside2">
+            <img src="/images/Pattern.png" className="img1"></img>
+            <img src="/images/dec1.png" className="dec1"></img>
+            <div className="logos">
+              <Logo url="" service="tiktok" />
+              <Logo url="" service="discord" />
+              <Logo url="" service="instagram" />
+              <Logo url="" service="facebook" />
+              <Logo url="" service="telegram" />
+              <Logo url="" service="youtube" />
             </div>
           </div>
         </section>
