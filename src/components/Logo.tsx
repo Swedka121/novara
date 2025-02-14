@@ -11,12 +11,6 @@ export default function Logo({
   url: string;
 }) {
   const [tl, setTl] = useState<GSAPTimeline>();
-  const [randX, setRandX] = useState<number>(
-    5 - Math.floor(Math.random() * 10)
-  );
-  const [randY, setRandY] = useState<number>(
-    5 - Math.floor(Math.random() * 10)
-  );
   const ref = useRef<HTMLImageElement | null>(null);
   gsap.registerPlugin(useGSAP);
   const { contextSafe } = useGSAP({ scope: ref });
@@ -24,26 +18,37 @@ export default function Logo({
   const anim = contextSafe(() => {
     const tl = gsap.timeline();
     setTl(tl);
-
+    const randX =
+      (window.innerWidth / 100) * 1 -
+      Math.floor(Math.random() * (window.innerWidth / 100) * 2);
+    const randY =
+      (window.innerWidth / 100) * 1 -
+      Math.floor(Math.random() * (window.innerWidth / 100) * 2);
+    const scale = 1 + Math.floor(Math.random());
     tl.to(
       ref.current,
       {
         x: randX,
         y: randY,
-        duration: 50,
+        duration: 5,
+        ease: "none",
+        transform: `scale (${scale})`,
       },
       0
     );
   });
 
+  const startAnim = () => {
+    anim();
+    tl?.play();
+  };
+
   useEffect(() => {
+    startAnim();
     setInterval(() => {
-      setRandX(100 - Math.floor(Math.random() * 200));
-      setRandY(100 - Math.floor(Math.random() * 200));
-      anim();
-      tl?.play();
+      startAnim();
     }, 10000);
-  });
+  }, []);
   return (
     <a href={url}>
       <img
